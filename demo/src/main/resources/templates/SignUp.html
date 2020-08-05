@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" >
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        var form = $('#signUpForm');
+
+        $('#btnReg').click(function(){
+            form.attr("method", "post");
+            form.attr("action", '/postsignup');
+            form.submit();
+        });
+    });
+</script>
+<body>
+<h1>회원가입</h1>
+<form id="signUpForm" action="SignUpSuccess"
+        th:action="@{SignUp}"
+        th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>
+                <input type="text" name="id" th:field="*{id}">
+            </td>
+        </tr>
+        <tr>
+            <td>PW</td>
+            <td>
+                <input type="text" name="pw" th:field="*{pw}">
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                남:<input type="radio" value="1" name="gender" th:field="*{gender}">
+                여:<input type="radio" value="2" name="gender" th:field="*{gender}" >
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text" name="tel" th:field="*{tel}">
+            </td>
+        </tr>
+        <tr>
+            <td>Adress</td>
+            <td>
+                <input type="text" name="adress" th:field="*{adress}">
+            </td>
+        </tr>
+
+    </table>
+</form>
+<br>
+<div>
+    <button id="btnReg">확인</button>
+</div>
+</body>
+</html>

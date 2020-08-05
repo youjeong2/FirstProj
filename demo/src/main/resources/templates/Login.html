@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+            var form = $('#loginform');
+        $('#btnSignUp').click(function(){
+            location.href = '/getsignup?';
+        });
+        $('#btnLogin').click(function(){
+            location.href = '/itemList';
+            form.attr("action", "itemList");
+            form.attr("method", "post");
+
+            form.submit();
+        });
+    });
+
+</script>
+<body>
+
+<h1>Login</h1>
+<form id="loginform">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>
+                <input type="text" name="id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>PW</td>
+            <td>
+                <input type="password" name="pw" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<div>
+    <button type="submit" id="btnLogin">로그인</button>
+    <button type="submit" id="btnSignUp">회원가입</button>
+</div>
+</body>
+</html>
