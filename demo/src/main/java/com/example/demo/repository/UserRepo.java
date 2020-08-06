@@ -23,29 +23,28 @@ public class UserRepo {
 
 
     public void signupInfo(User signup) throws Exception{
-        String query = "insert into signup(" +
-                "id, pw, gender, tel, adress) values(?, ?, ?, ?, ?)";
+        String query = "insert into user(" +
+                "signup_no, id, pw, gender, tel, adress) values(?, ?, ?, ?, ?, ?)";
 
         log.info("signupInfo repo");
 
-        jdbcTemplate.update(query, signup.getId(), signup.getPw(),
+        jdbcTemplate.update(query, signup.getSignupNo(), signup.getId(), signup.getPw(),
                             signup.getGender(), signup.getTel(), signup.getAdress());
     }
 
-    public boolean search(User signup) throws Exception {
+    public Boolean loginInfo(User login) throws Exception {
         List<User> results = jdbcTemplate.query(
-                "select id, pw from member where id = ? and pw = ?",
+                "select id, pw from user where id = ? and pw = ?",
                 new RowMapper<User>() {
                     @Override
                     public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        User signup = new User();
-                        signup.setId(rs.getString("id"));
-                        signup.setPw(rs.getString("pw"));
-                        return signup;
+                        User login = new User();
+                        login.setId(rs.getString("id"));
+                        login.setPw(rs.getString("pw"));
+                        return login;
                     }
-                }, signup.getId(), signup.getPw());
+                }, login.getId(), login.getPw());
         return results.isEmpty() ? false : true;
     }
-
 }
 

@@ -15,10 +15,15 @@ public class UserServiceImpl implements UserService {
     UserRepo repo;
 
     @Override
-    public void signInfo(User signup) throws Exception {
+    public void signupInfo(User signup) throws Exception {
         log.info("signupInfo");
         repo.signupInfo(signup);
     }
+    @Override
+    public Boolean loginInfo(User login) throws Exception {
+        log.info("loginInfo");
+        return repo.loginInfo(login);
 
 
+    }
 }
